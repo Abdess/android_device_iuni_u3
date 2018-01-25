@@ -282,6 +282,28 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="1" />
     </path>
 
+    <path name="audio-ull-playback bt-sco">
+        <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3" value="1" />
+    </path>
+
+    <path name="audio-ull-playback bt-sco-wb">
+        <path name="audio-ull-playback bt-sco" />
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+    </path>
+
+    <path name="audio-ull-playback afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="1" />
+    </path>
+
+       <path name="audio-ull-playback usb-headphones">
+        <path name="audio-ull-playback afe-proxy" />
+    </path>
+
+    <path name="audio-ull-playback speaker-and-usb-headphones">
+        <path name="audio-ull-playback usb-headphones" />
+        <path name="audio-ull-playback" />
+    </path>
+
     <path name="multi-channel-playback afe-proxy">
         <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="1" />
     </path>
@@ -756,10 +778,18 @@
         <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
+    <path name="line">
+        <path name="headphones" />
+    </path>
+
     <path name="voice-headphones">
         <path name="hph" />
         <ctl name="RX1 Digital Volume" value="85" />
         <ctl name="RX2 Digital Volume" value="85" />
+    </path>
+
+    <path name="voice-line">
+        <path name="voice-headphones" />
     </path>
 
     <path name="speaker-and-headphones">
@@ -768,6 +798,10 @@
         <ctl name="RX2 Digital Volume" value="84" />
         <ctl name="RX3 Digital Volume" value="80" />
         <ctl name="RX4 Digital Volume" value="80" />
+    </path>
+
+    <path name="speaker-and-line">
+        <path name="speaker-and-headphones" />
     </path>
 
 
@@ -887,9 +921,9 @@
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
-        <ctl name="SLIM TX7 MUX" value="DEC2" />
+        <ctl name="SLIM TX7 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
-        <ctl name="SLIM TX8 MUX" value="DEC4" />
+        <ctl name="SLIM TX8 MUX" value="DEC2" />
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="ADC3 Volume" value="19" />
         <ctl name="ADC5 Volume" value="19" />

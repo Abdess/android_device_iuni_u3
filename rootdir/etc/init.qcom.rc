@@ -17,13 +17,18 @@
 import /init.qcom.usb.rc
 import /init.qcom.power.rc
 
-on init
-    export LD_SHIM_LIBS "/system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so"
+on early-init
+    chown system system /sys/kernel/debug/kgsl/proc
+    write /sys/block/zram0/comp_algorithm lz4
 
+on init
+    export LD_SHIM_LIBS "/system/lib/hw/camera.vendor.u3.so|/system/lib/libshim_camera.so"
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     mkdir /firmware 0771 system system
     symlink /sdcard /storage/sdcard0
+
+    write /proc/sys/vm/page-cluster 0
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -32,6 +37,8 @@ on early-boot
 
 on fs
     mount_all ./fstab.u3
+    swapon_all ./fstab.u3
+
     restorecon_recursive /persist
 
     mkdir /dev/usb-ffs 0770 shell shell
@@ -117,7 +124,18 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet5/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet7/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio0/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio1/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio2/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio3/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio4/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio5/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
 
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
@@ -140,14 +158,12 @@ on boot
     chmod 0664 /sys/class/graphics/fb0/modes
 
     # Subsytem Restart
-    # adsp
+    #adsp
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
-    # modem
+    #modem
     write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
-    # wcnss
+    #venus
     write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
-    # venus
-    write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
 
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
@@ -238,8 +254,8 @@ on post-fs-data
     chown root system /proc/touchpanel/keypad_enable
     chmod 0660 /proc/touchpanel/keypad_enable
 
-    chown system system /sys/devices/virtual/graphics/fb0/rgb
-    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+    chown system system /sys/devices/virtual/graphics/fb0/dyn_pu
+    chmod 0660 /sys/devices/virtual/graphics/fb0/dyn_pu
 
     setprop vold.post_fs_data_done 1
 
@@ -290,6 +306,9 @@ service sensors /system/bin/sensors.qcom
 # but only if ro.data.large_tcp_window_size property is set.
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
+
+on property:persist.env.fastdorm.enabled=true
+    setprop persist.radio.data_no_toggle 1
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -372,6 +391,14 @@ service mpdecision /system/bin/mpdecision --avg_comp
    user root
    group root readproc
    disabled
+
+service thermal-engine /system/vendor/bin/thermal-engine
+   class main
+   user root
+   group root
+   socket thermal-send-client stream 0666 system system
+   socket thermal-recv-client stream 0660 system system
+   socket thermal-recv-passive-client stream 0666 system system
 
 service time_daemon /system/bin/time_daemon
     class late_start

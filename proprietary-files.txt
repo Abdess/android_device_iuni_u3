@@ -1,8 +1,9 @@
 # Camera
 bin/mm-qcamera-daemon
-vendor/lib/libactuator_dw9714.so
-vendor/lib/libactuator_dw9714_camcorder.so
-vendor/lib/libactuator_dw9714_camera.so
+lib/hw/camera.vendor.bacon.so
+lib/libmmcamera_interface.so
+lib/libmmjpeg_interface.so
+lib/libqomx_core.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
@@ -10,10 +11,8 @@ vendor/lib/libmmcamera2_cpp_module.so
 vendor/lib/libmmcamera2_frame_algorithm.so
 vendor/lib/libmmcamera2_iface_modules.so
 vendor/lib/libmmcamera2_imglib_modules.so
-vendor/lib/libmmcamera2_is.so
 vendor/lib/libmmcamera2_isp_modules.so
 vendor/lib/libmmcamera2_pproc_modules.so
-vendor/lib/libmmcamera2_q3a_special.so
 vendor/lib/libmmcamera2_sensor_modules.so
 vendor/lib/libmmcamera2_stats_algorithm.so
 vendor/lib/libmmcamera2_stats_modules.so
@@ -25,6 +24,7 @@ vendor/lib/libmmcamera_hdr_lib.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imx214.so
 vendor/lib/libmmcamera_ov5648.so
+vendor/lib/libmmcamera_sony_imx214_eeprom.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_tuning.so
@@ -47,76 +47,23 @@ vendor/lib/libchromatix_imx214_preview_binning.so
 vendor/lib/libchromatix_imx214_snapshot.so
 vendor/lib/libchromatix_imx214_snapshot_hdr.so
 vendor/lib/libchromatix_imx214_video_binning.so
+vendor/lib/libchromatix_imx214_video_cmcc.so
 vendor/lib/libchromatix_imx214_video_hdr.so
 vendor/lib/libchromatix_ov5648_common.so
 vendor/lib/libchromatix_ov5648_default_video.so
 vendor/lib/libchromatix_ov5648_preview.so
+vendor/lib/libchromatix_ov5648_preview_fb.so
+vendor/lib/libchromatix_ov5648_video_cmcc.so
 vendor/lib/libchromatix_ov5648_zsl.so
+vendor/lib/libchromatix_ov5648_zsl_fb.so
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 
-# Modem firmware
-etc/firmware/adsp.b00
-etc/firmware/adsp.b01
-etc/firmware/adsp.b02
-etc/firmware/adsp.b03
-etc/firmware/adsp.b04
-etc/firmware/adsp.b05
-etc/firmware/adsp.b06
-etc/firmware/adsp.b07
-etc/firmware/adsp.b08
-etc/firmware/adsp.b09
-etc/firmware/adsp.b10
-etc/firmware/adsp.b11
-etc/firmware/adsp.b12
-etc/firmware/adsp.mdt
-etc/firmware/cmnlib.b00
-etc/firmware/cmnlib.b01
-etc/firmware/cmnlib.b02
-etc/firmware/cmnlib.b03
-etc/firmware/cmnlib.mdt
-etc/firmware/isdbtmm.b00
-etc/firmware/isdbtmm.b01
-etc/firmware/isdbtmm.b02
-etc/firmware/isdbtmm.b03
-etc/firmware/isdbtmm.mdt
-etc/firmware/keymaste.b00
-etc/firmware/keymaste.b01
-etc/firmware/keymaste.b02
-etc/firmware/keymaste.b03
-etc/firmware/keymaste.mdt
-etc/firmware/mc_v2.b00
-etc/firmware/mc_v2.b01
-etc/firmware/mc_v2.b02
-etc/firmware/mc_v2.b03
-etc/firmware/mc_v2.mdt
-etc/firmware/playread.b00
-etc/firmware/playread.b01
-etc/firmware/playread.b02
-etc/firmware/playread.b03
-etc/firmware/playread.mdt
-etc/firmware/tqs.b00
-etc/firmware/tqs.b01
-etc/firmware/tqs.b02
-etc/firmware/tqs.b03
-etc/firmware/tqs.mdt
-etc/firmware/wcnss.b00
-etc/firmware/wcnss.b01
-etc/firmware/wcnss.b02
-etc/firmware/wcnss.b04
-etc/firmware/wcnss.b06
-etc/firmware/wcnss.b07
-etc/firmware/wcnss.b08
-etc/firmware/wcnss.b09
-etc/firmware/wcnss.mdt
-etc/firmware/widevine.b00
-etc/firmware/widevine.b01
-etc/firmware/widevine.b02
-etc/firmware/widevine.b03
-etc/firmware/widevine.mdt
+# NFC
+vendor/firmware/libpn547_fw.so
 
 # Sensors
 etc/sensor_def_qcomdev.conf

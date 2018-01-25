@@ -33,13 +33,3 @@ TARGET_VENDOR := iuni
 TARGET_VENDOR_PRODUCT_NAME := u3
 TARGET_VENDOR_DEVICE_NAME := NBL8910A
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=U3 PRODUCT_NAME=u3
-
-# Unofficial build ID
-TARGET_UNOFFICIAL_BUILD_ID := Sultan
-
-## Use the latest approved GMS identifiers unless running a signed build
-ifneq ($(SIGN_BUILD),true)
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=iuni/u3/NBL8910A:6.0.1/MHC19Q/ZNH2KAS1KN:user/release-keys \
-    PRIVATE_BUILD_DESC="u3-user 6.0.1 MHC19Q ZNH2KAS1KN release-keys"
-endif

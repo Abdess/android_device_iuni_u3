@@ -2,11 +2,6 @@
 # system.prop for u3
 #
 
-ro.adb.secure=0
-ro.secure=1
-ro.debuggable=1
-persist.sys.usb.config=adb
-
 # Bluetooth
 bluetooth.hfp.client=1
 qcom.bluetooth.soc=smd
@@ -21,11 +16,12 @@ ro.qualcomm.cabl=0
 
 # Camera
 camera2.portability.force_api=1
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
 
 # Display
 ro.sf.lcd_density=480
 persist.hwc.mdpcomp.enable=true
-persist.sys.strictmode.disable=true
 ro.opengles.version=196608
 
 # GPS
@@ -35,7 +31,6 @@ ro.gps.agps_provider=1
 # Media
 af.fast_track_multiplier=1
 audio_hal.period_size=192
-drm.service.enabled=true
 persist.audio.fluence.voicecall=true
 ro.qc.sdk.audio.fluencetype=fluence
 
@@ -43,9 +38,9 @@ audio.offload.buffer.size.kb=32
 audio.offload.video=true
 audio.offload.multiple.enabled=false
 audio.offload.gapless.enabled=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
 audio.deep_buffer.media=true
-ro.config.vc_call_vol_steps=8
-ro.config.media_vol_steps=20
 
 mm.enable.smoothstreaming=true
 media.aac_51_output_enabled=true
@@ -54,6 +49,10 @@ media.aac_51_output_enabled=true
 persist.data.netmgrd.qos.enable=true
 persist.data.tcpackprio.enable=true
 ro.data.large_tcp_window_size=true
+
+# Perf
+ro.qualcomm.perf.cores_online=2
+ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
@@ -67,6 +66,9 @@ ro.telephony.default_network=9
 ro.use_data_netmgrd=true
 
 telephony.lteOnGsmDevice=1
+
+# SdcardFS
+ro.sys.sdcardfs=true
 
 # Sensors
 ro.qc.sdk.camera.facialproc=true

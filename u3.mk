@@ -69,6 +69,10 @@ PRODUCT_PACKAGES += \
     camera.msm8974 \
     Snap
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # Dalvik/HWUI
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
@@ -87,8 +91,7 @@ PRODUCT_PACKAGES += \
     gralloc.msm8974 \
     hwcomposer.msm8974 \
     memtrack.msm8974 \
-    liboverlay \
-    libboringssl-compat
+    liboverlay
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -112,11 +115,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8974
-
-# Limit dex2oat threads to improve thermals
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-threads=2 \
-    dalvik.vm.image-dex2oat-threads=4
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -192,15 +190,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh
 
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_u3
+# Thermal config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf
 
-# Weather providers
+# Widevine
 PRODUCT_PACKAGES += \
-    OpenWeatherMapWeatherProvider \
-    YahooWeatherProvider \
-    WundergroundWeatherProvider
+    libshim_wvm
 
 # WiFi
 PRODUCT_COPY_FILES += \
