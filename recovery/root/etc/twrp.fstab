@@ -1,0 +1,11 @@
+# mount point	fstype		device			[device2]
+
+#/firmware      vfat     /dev/block/platform/msm_sdcc.1/by-name/modem     flags=mounttodecrypt;fsflags=ro
+/boot		   emmc		/dev/block/platform/msm_sdcc.1/by-name/boot
+/system		   ext4		/dev/block/platform/msm_sdcc.1/by-name/system
+/data		   ext4		/dev/block/platform/msm_sdcc.1/by-name/userdata  flags=encryptable=/dev/block/platform/msm_sdcc.1/by-name/reserve4
+/cache		   ext4		/dev/block/platform/msm_sdcc.1/by-name/cache
+/misc		   emmc		/dev/block/platform/msm_sdcc.1/by-name/misc
+/recovery	   emmc		/dev/block/platform/msm_sdcc.1/by-name/recovery
+
+/usb_otg       vfat     /dev/block/sda1 /dev/block/sda                   flags=display="USB-OTG";storage;wipeingui;removable
