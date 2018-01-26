@@ -1,6 +1,6 @@
 # Camera
 bin/mm-qcamera-daemon
-lib/hw/camera.vendor.bacon.so
+lib/hw/camera.vendor.nbl8910a.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libqomx_core.so

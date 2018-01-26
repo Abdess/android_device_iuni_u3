@@ -218,7 +218,7 @@ PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf
 
 # Call the proprietary setup
-$(call inherit-product, vendor/oneplus/bacon/bacon-vendor.mk)
+$(call inherit-product, vendor/iuni/nbl8910a/nbl8910a-vendor.mk)
 
 # Inherit from gionee-common
 $(call inherit-product, device/gionee/common/common.mk)

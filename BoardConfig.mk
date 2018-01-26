@@ -176,7 +176,7 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
 # Inherit from the proprietary version
-include vendor/oneplus/bacon/BoardConfigVendor.mk
+include vendor/iuni/nbl8910a/BoardConfigVendor.mk
 
 #TWRP flags
 #DEVICE_RESOLUTION := 1440x2560
