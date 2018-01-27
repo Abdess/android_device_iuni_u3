@@ -20,7 +20,7 @@ set -e
 export INITIAL_COPYRIGHT_YEAR=2014
 
 # Required!
-DEVICE=u3
+DEVICE=nbl8910a
 VENDOR=iuni
 
 # Load extractutils and do some sanity checks

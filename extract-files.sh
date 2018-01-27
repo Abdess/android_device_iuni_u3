@@ -17,7 +17,7 @@
 
 set -e
 
-DEVICE=u3
+DEVICE=nbl8910a
 VENDOR=iuni
 
 # Load extractutils and do some sanity checks
